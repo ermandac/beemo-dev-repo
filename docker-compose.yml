@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  beemo:
+    build:
+      context: .
+      platforms:
+        - linux/arm64
+    container_name: beemodos_container2
+    volumes:
+      - ./SavedIMG:/usr/src/app/SavedIMG
+      - ./Model:/usr/src/app/Model
+    devices:
+      - "/dev/snd:/dev/snd"  # Access to audio input devices
+    ports:
+      - "4000:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always

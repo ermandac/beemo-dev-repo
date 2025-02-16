@@ -1,0 +1,17 @@
+services:
+  beemo:
+    build:
+      context: .
+      dockerfile: V2Dockerfile
+    image: peninsularizz/beemodos_container:latest
+    container_name: beemodos_container
+    volumes:
+      - ./SavedIMG:/usr/src/app/SavedIMG
+      - ./Model:/usr/src/app/Model
+    ports:
+      - "4000:80"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+    stdin_open: true
+    tty: true
